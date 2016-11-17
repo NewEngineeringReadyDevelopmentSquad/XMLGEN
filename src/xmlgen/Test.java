@@ -53,7 +53,11 @@ public class Test {
                                 "May not be enrolled in one of the following Programs: dnu MED in Educational Admin MPA in Public Administration Bus. Admin Accelerated online May not be enrolled in one of the following Levels: English Language Institute"
         };
     
-        XMLGEN test = new XMLGEN(StringArray1, StringArray2);
+        XMLGEN test = new XMLGEN();
+        test.generateWithArrays(StringArray1, StringArray2, "CSCI-3333");
+        
+        
+       
     
     }
 }
