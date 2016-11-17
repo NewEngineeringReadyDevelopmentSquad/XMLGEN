@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Course>
+  <Department>Computer Science</Department>
+  <Prefix>ISTHISWORKING</Prefix>
+  <Number>12345</Number>
+  <Name>Testing</Name>
+  <Description>1</Description>
+  <Credit-hours>2</Credit-hours>
+  <Lecture-hours>3</Lecture-hours>
+  <Lab-hours>4</Lab-hours>
+  <Level>5</Level>
+  <Schedule-type>6</Schedule-type>
+  <Prerequisite>7</Prerequisite>
+  <Co-requisite>8</Co-requisite>
+  <Course-attributes>9</Course-attributes>
+  <Legacy-number>0</Legacy-number>
+  <Cross-listed>0</Cross-listed>
+  <Restrictions>0</Restrictions>
+</Course>

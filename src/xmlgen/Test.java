@@ -5,19 +5,17 @@
  */
 package xmlgen;
 
+import java.util.Scanner;
+
 /**
  *
- * @author Adrian
+ * @author Gonzalo, Adrian, Alex
  */
 
 public class Test {
-
-    /**
-     * @param args the command line arguments
-     */
     
     public static void main(String[] args) {
-        String[] StringArray1 = {  "Department", 
+        String[] NodeName = {  "Department", 
                                 "Prefix",
                                 "Number",
                                 "Name",
@@ -35,7 +33,7 @@ public class Test {
                                 "Restrictions",
                                 
         };
-        String[] StringArray2 = {  "Computer Science",
+        String[] NodeText = {  "Computer Science",
                                 "CSCI", 
                                 "2388",
                                 "Computer Science II HON",
@@ -51,13 +49,24 @@ public class Test {
                                 "None",
                                 "CMPE 2388",
                                 "May not be enrolled in one of the following Programs: dnu MED in Educational Admin MPA in Public Administration Bus. Admin Accelerated online May not be enrolled in one of the following Levels: English Language Institute"
-        };
-    
+        };      
+
+           
+//        XMLGEN test = new XMLGEN();
+//        test.generateWithArrays(StringArray1, StringArray2, "CSCI-3333");        
+
+        // Console Command for Testing 
+        Scanner scanner = new Scanner(System.in);
+        
+        // Comment this for-loop and run the program to get the default xml settings
+       for (int i = 0; i < NodeText.length; i++) {
+           System.out.println("Enter the " + NodeName[i]);
+           NodeText[i] = scanner.nextLine(); //This will overide the default NodeText values of the array           
+       }             
+
         XMLGEN test = new XMLGEN();
-        test.generateWithArrays(StringArray1, StringArray2, "CSCI-3333");
         
-        
-       
-    
+        String filename = NodeText[1].toLowerCase() + "-" + NodeText[2]; // Save file according to Course Prefix and Course Number
+        test.generateWithArrays(NodeName, NodeText, filename);
     }
 }
