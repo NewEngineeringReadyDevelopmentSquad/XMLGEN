@@ -5,6 +5,7 @@
  */
 package xmlgen;
 
+import pkXMLGen.XMLGEN;
 import java.util.Scanner;
 
 /**
@@ -59,14 +60,14 @@ public class Test {
         Scanner scanner = new Scanner(System.in);
         
         // Comment this for-loop and run the program to get the default xml settings
-       for (int i = 0; i < NodeText.length; i++) {
-           System.out.println("Enter the " + NodeName[i]);
-           NodeText[i] = scanner.nextLine(); //This will overide the default NodeText values of the array           
-       }             
+//       for (int i = 0; i < NodeText.length; i++) {
+//           System.out.println("Enter the " + NodeName[i]);
+//           NodeText[i] = scanner.nextLine(); //This will overide the default NodeText values of the array           
+//       }             
 
         XMLGEN test = new XMLGEN();
         
         String filename = NodeText[1].toLowerCase() + "-" + NodeText[2]; // Save file according to Course Prefix and Course Number
-        test.generateWithArrays(NodeName, NodeText, filename);
+        test.generateXMLWithArrays(NodeName, NodeText, "new course");
     }
 }

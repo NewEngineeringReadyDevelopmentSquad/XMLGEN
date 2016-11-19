@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xmlgen;
+package pkXMLGen;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,19 +25,27 @@ import org.w3c.dom.Element;
  */
 
 public class XMLGEN {
-    XMLGEN()
-    {
+    private String [] NodeName = null;
+    private String [] NodeText = null;
+    private ArrayList<String> NodeNameList = null;
+    private ArrayList<String> NodeTextList = null;
+    private String newfilename;
+    
+     public XMLGEN()
+    {    
     }
-    XMLGEN(ArrayList<String> NodeName, ArrayList<String> NodeText, String filename)
+    public XMLGEN(ArrayList<String> NewNodeNameList, ArrayList<String> NewNodeTextList)
     {
+        generateWithArraylists(NodeNameList,NodeTextList,newfilename);
     }
-    XMLGEN(String[] NodeName, String[] NodeText, String filename)
+    public XMLGEN(String[] NewNodeName, String[] NewNodeText)
     {
+        generateWithArrays(NodeName,NodeText,newfilename);
     }
   
     
     
-    public void generateWithArraylists(ArrayList<String> NodeName, ArrayList<String> NodeText, String filename){
+    private void generateWithArraylists(ArrayList<String> NodeNameList,ArrayList<String> NodeTextList, String filename){
         try {
               
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -46,9 +54,9 @@ public class XMLGEN {
             Element rootElement = doc.createElement("Course");
             doc.appendChild(rootElement);
 
-                for (int i = 0; i <NodeName.size(); i++) {
-                    Element e = doc.createElement(NodeName.get(i));
-                    e.appendChild(doc.createTextNode(NodeText.get(i)));
+                for (int i = 0; i <NodeNameList.size(); i++) {
+                    Element e = doc.createElement(NodeNameList.get(i));
+                    e.appendChild(doc.createTextNode(NodeTextList.get(i)));
                     rootElement.appendChild(e);
                 }
 
@@ -74,7 +82,7 @@ public class XMLGEN {
     }
     
     
-    public void generateWithArrays(String[] NodeName, String[] NodeText, String filename){
+    private void generateWithArrays(String [] NodeName,String [] NodeText, String filename){
         try {
               
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -108,6 +116,48 @@ public class XMLGEN {
         catch (TransformerException tfe) {
                     tfe.printStackTrace();
             }
+    }
+     public void generateXMLWithArrayLists(ArrayList<String> NewNodeNamesList, ArrayList<String> NewNodeTextstList, String FileName)
+    {
+        generateWithArraylists(NewNodeNamesList,NewNodeTextstList, FileName);
+    }
+     
+    public void generateXMLWithArrays(String [] NodeNames,String [] NodeTexts, String FileName)
+    {
+        generateWithArrays(NodeNames,NodeTexts, FileName);
+    }
+    
+    
+    public String[] getNodeName() {
+        return NodeName;
+    }
+
+    public void setNodeName(String[] NodeName) {
+        this.NodeName = NodeName;
+    }
+
+    public String[] getNodeText() {
+        return NodeText;
+    }
+
+    public void setNodeText(String[] NodeText) {
+        this.NodeText = NodeText;
+    }
+
+    public ArrayList<String> getNodeNameList() {
+        return NodeNameList;
+    }
+
+    public void setNodeNameList(ArrayList<String> NodeNameList) {
+        this.NodeNameList = NodeNameList;
+    }
+
+    public ArrayList<String> getNodeTextList() {
+        return NodeTextList;
+    }
+
+    public void setNodeTextList(ArrayList<String> NodeTextList) {
+        this.NodeTextList = NodeTextList;
     }
     
 }
