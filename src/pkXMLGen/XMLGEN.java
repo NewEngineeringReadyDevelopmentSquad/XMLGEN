@@ -29,6 +29,7 @@ public class XMLGEN {
     private String [] NodeText = null;
     private ArrayList<String> NodeNameList = null;
     private ArrayList<String> NodeTextList = null;
+    private String NewRootNode;
     private String newfilename;
     
 
@@ -48,21 +49,21 @@ public class XMLGEN {
  * 
  * @param  NewNodeNameList  An ArrayList of the Element names
  * @param  NewNodeTextList  An ArrayList of the Text inside the Elements
- * @param  NewFileName Takes a string and sets it as the file name of the XML
+ * @param  NewRootNode Takes a string and sets it as the root element of the XML
  */
-    public XMLGEN(ArrayList<String> NewNodeNameList, ArrayList<String> NewNodeTextList, String NewFileName)
+    public XMLGEN(ArrayList<String> NewNodeNameList, ArrayList<String> NewNodeTextList, String RootNode, String filename)
     {
-        generateWithArraylists(NodeNameList,NodeTextList,newfilename);
+        generateWithArraylists(NodeNameList,NodeTextList,RootNode,filename);
     }
 /**
  * This Constructor lets the user input two Arrays and specify the file name of the XML. 
  * @param  NewNodeName  An Array of the Element names
  * @param  NewNodeText  An Array of the Text inside the Elements
- * @param  NewFileName Takes a string and sets it as the file name of the XML
+ * @param  NewRootNode Takes a string and sets it as the root element of the XML
  */
-    public XMLGEN(String[] NewNodeName, String[] NewNodeText, String NewFileName)
+    public XMLGEN(String[] NewNodeName, String[] NewNodeText, String NewRootNode, String newfilename)
     {
-        generateWithArrays(NodeName,NodeText,newfilename);
+        generateWithArrays(NodeName,NodeText,NewRootNode,newfilename);
     }
   
     
@@ -70,21 +71,22 @@ public class XMLGEN {
  * This method lets the user input two ArrayLists and specify the file name of the XML. 
  * @param  NodeNameList  An ArrayList of the Element names
  * @param  NodeTextList  An Array of the Text inside the Elements
- * @param  filename Takes a ArrayList and sets it as the file name of the XML
+ * @param  NewRootNode Takes a string and sets it as the root element of the XML
  */
-    private void generateWithArraylists(ArrayList<String> NodeNameList,ArrayList<String> NodeTextList, String filename){
+    private void generateWithArraylists(ArrayList<String> NodeNameList,ArrayList<String> NodeTextList, String NewRootNode, String newfilename){
         try {
               
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("Course");
+            Element rootElement = doc.createElement(NewRootNode);
             doc.appendChild(rootElement);
 
                 for (int i = 0; i <NodeNameList.size(); i++) {
                     Element e = doc.createElement(NodeNameList.get(i));
                     e.appendChild(doc.createTextNode(NodeTextList.get(i)));
                     rootElement.appendChild(e);
+                    
                 }
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -92,7 +94,7 @@ public class XMLGEN {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(filename + ".xml"));
+            StreamResult result = new StreamResult(new File(newfilename + ".xml"));
 
 
             transformer.transform(source, result);
@@ -112,15 +114,15 @@ public class XMLGEN {
  * This method lets the user input two Arrays and specify the file name of the XML. 
  * @param  NodeName  An Array of the Element names
  * @param  NodeText  An Array of the Text inside the Elements
- * @param  filename Takes a string and sets it as the file name of the XML
+ * @param  NewRootNode Takes a string and sets it as the root element of the XML
  */
-    private void generateWithArrays(String [] NodeName,String [] NodeText, String filename){
+    private void generateWithArrays(String [] NodeName,String [] NodeText, String NewRootNode, String newfilename){
         try {
               
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("Course");
+            Element rootElement = doc.createElement(NewRootNode);
             doc.appendChild(rootElement);
 
                 for (int i = 0; i <NodeName.length; i++) {
@@ -134,7 +136,7 @@ public class XMLGEN {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(filename + ".xml"));
+            StreamResult result = new StreamResult(new File(newfilename + ".xml"));
 
 
             transformer.transform(source, result);
@@ -155,13 +157,13 @@ public class XMLGEN {
  * This method lets the user input two ArrayLists and specify the file name of the XML using the private generateWithArraylists method. 
  * @param  NewNodeNamesList  An ArrayList of the Element names
  * @param  NewNodeTextstList  An ArrayList of the Text inside the Elements
- * @param  FileName Takes a string and sets it as the file name of the XML
+ * @param  NewRootNode Takes a string and sets it as the root element of the XML
  */
     
     
-     public void generateXMLWithArrayLists(ArrayList<String> NewNodeNamesList, ArrayList<String> NewNodeTextstList, String FileName)
+     public void generateXMLWithArrayLists(ArrayList<String> NewNodeNamesList, ArrayList<String> NewNodeTextstList, String NewRootNode, String newfilename)
     {
-        generateWithArraylists(NewNodeNamesList,NewNodeTextstList, FileName);
+        generateWithArraylists(NewNodeNamesList,NewNodeTextstList, NewRootNode, newfilename);
     }
      
      
@@ -171,12 +173,12 @@ public class XMLGEN {
  * This method lets the user input two Arrays and specify the file name of the XML using the private generateWithArrays method. 
  * @param  NodeNames  An Array of the Element names
  * @param  NodeTexts  An Array of the Text inside the Elements
- * @param  FileName Takes a string and sets it as the file name of the XML
+ * @param  FileName Takes a string and sets it as the root element of the XML
  */
      
-    public void generateXMLWithArrays(String [] NodeNames,String [] NodeTexts, String FileName)
+    public void generateXMLWithArrays(String [] NodeNames,String [] NodeTexts, String NewRootNode, String newfilename)
     {
-        generateWithArrays(NodeNames,NodeTexts, FileName);
+        generateWithArrays(NodeNames,NodeTexts, NewRootNode,newfilename);
     }
     
     

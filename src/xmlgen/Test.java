@@ -68,6 +68,8 @@ public class Test {
         XMLGEN test = new XMLGEN();
         
         String filename = NodeText[1].toLowerCase() + "-" + NodeText[2]; // Save file according to Course Prefix and Course Number
-        test.generateXMLWithArrays(NodeName, NodeText, "new course");
+        test.generateXMLWithArrays(NodeName, NodeText, "Course", filename);
+        test.generateXMLWithArrays(NodeName, NodeText, "faculty", filename);
+        
     }
 }
