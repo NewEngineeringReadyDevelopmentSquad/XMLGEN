@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Course>
+<faculty>
   <Department>Computer Science</Department>
   <Prefix>CSCI</Prefix>
   <Number>2388</Number>
@@ -16,4 +16,4 @@
   <Legacy-number>None</Legacy-number>
   <Cross-listed>CMPE 2388</Cross-listed>
   <Restrictions>May not be enrolled in one of the following Programs: dnu MED in Educational Admin MPA in Public Administration Bus. Admin Accelerated online May not be enrolled in one of the following Levels: English Language Institute</Restrictions>
-</Course>
+</faculty>
